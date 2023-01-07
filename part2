@@ -6,7 +6,7 @@ guess_col=['شم','ینی','اسف']
 
 rows=[['0','0','0','1','0'],
      ['0','0','1','0','0'],
-     ['0','0','0','0','1']]
+     ['0','0','1','0','0']]
 
 cols=[['0','0','1'],
      ['0','0','0'],
@@ -22,8 +22,6 @@ for row1 in rows:
             continue
         else: 
             for i in range(len(row)):
-                if(i>len(word)):
-                    break
                 if(row[i]=='0'):
                     row[i]=word[i]
                 if(row[i]=='1'):
