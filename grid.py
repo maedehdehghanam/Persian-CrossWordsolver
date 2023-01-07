@@ -81,3 +81,11 @@ def set_ans(file):
 		i = 1+i
 	print(grid)
 	return 
+
+def get_columns_grid(file):
+	grid = make_grid(file)
+	num_columns = np.shape(grid)[1]
+	columns=[]
+	for i in range(num_columns):
+		columns.append(grid[:, i])
+	return columns	
