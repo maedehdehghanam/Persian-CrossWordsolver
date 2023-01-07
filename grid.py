@@ -21,11 +21,9 @@ def make_grid(file):
 	#backward every line of the table 
 	for i in range(m):
 		grid[i] = np.flipud(grid[i])
+	f.close()
 	return grid
 
-'''
-get the info
-'''
 def get_info(file):
 	f = open(file, "r")
 	dim = f.readline()
@@ -54,4 +52,32 @@ def get_info(file):
 			horizental_info.append(row_list)
 		else:
 			vertical_info.append(row_list)
+	f.close()
 	return horizental_info,vertical_info 
+ 
+def set_ans(file):
+	f = open(file, "r")
+	dim = f.readline()
+	m   = int(dim.split()[0])
+	n   = int(dim.split()[1])
+	shape = f.readline()
+	info = f.readline()
+	ans = f.readline()
+	grid = make_grid(file)
+	ans_list = ans.split('@')
+	ans_list = ans_list[:m]
+	print(ans_list)
+	i=0
+	j=0
+	for index,value in enumerate(ans_list):
+		if value[0]=='&':
+			value = value[1:]
+		elif value[-1] == '&':
+			value = value[:-1]
+		j = 0
+		for char in value:
+			grid[i][j] = value[j]
+			j = j+1
+		i = 1+i
+	print(grid)
+	return 
