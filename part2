@@ -1,0 +1,78 @@
+import numpy as np
+
+guess_row= ['شیر','من','یس','یوسف']
+guess_col=['شم','ینی','اسف']
+#grid=make_grid(file)
+
+rows=[['0','0','0','1','0'],
+     ['0','0','1','0','0'],
+     ['0','0','0','0','1']]
+
+cols=[['0','0','1'],
+     ['0','0','0'],
+     ['0','1','0'],
+     ['1','0','0'],
+     ['0','0','0']]
+
+flag=0 
+for row1 in rows:
+    row=row1
+    for word in guess_row:
+        if(len(word)>len(row)):
+            continue
+        else: 
+            for i in range(len(row)):
+                if(i>len(word)):
+                    break
+                if(row[i]=='0'):
+                    row[i]=word[i]
+                if(row[i]=='1'):
+                    word='1'+word
+                if(row[i]=='1' and i!=0 and len(word)>i-1):
+                    row=row1
+                    break
+                if(row[i]==word[i]):
+                    i+=1
+                elif(row[i]!=word[i]):
+                    row=row1
+                    break
+                if(row[i]=='1'and len(word)==i):
+                    row1=row
+                    flag=1
+                    break
+        
+        if(flag==1):
+            guess_row.remove(word)
+            break
+
+flag=0
+for col1 in cols:
+    col=col1
+    for word in guess_col:
+        if(len(word)>len(col)):
+            continue
+        else: 
+            for i in range(len(col)):
+                if(col[i]=='0' and len(word)<i):
+                    col[i]=word[i]
+                if(col[i]=='1'):
+                    word='1'+word
+                if(col[i]=='1' and i!=0 and len(word)>i):
+                    col=col1
+                    break
+                if(col[i]==word[i]):
+                    continue
+                elif(col[i]!=word[i]):
+                    col=col1
+                    break
+                if(col[i]=='1'and len(word)==i):
+                    col1=col
+                    flag=1
+                    break
+        if(flag==1):
+            guess_col.remove(word)
+            break
+
+print(rows)
+print(cols)
+                    
