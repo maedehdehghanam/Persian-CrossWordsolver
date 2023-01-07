@@ -1,18 +1,17 @@
 import numpy as np 
-'''
-OPEN SAMPLE.TXT
-'''
+
 f = open("sample.txt", "r")
 ''''
 get the dimention of the table
 '''
 dim = f.readline()
-m   = int(num.split()[0])
-n   = int(num.split()[1])
+m   = int(dim.split()[0])
+n   = int(dim.split()[1])
 '''
 get the table's shape to make the grid
 '''
 shape = f.readline()
-shpe_list = list(shpe)
+shape_list = list(shape)
 grid= np.array(shape_list[0:-1]).reshape((m,n)) 
 
+print(grid)
