@@ -53,6 +53,14 @@ def get_info(file):
 		else:
 			vertical_info.append(row_list)
 	f.close()
+	print("horizental information:\n")
+	for i in horizental_info:
+		for j in i:
+			print(j["KEY"])
+	print("vertical information:\n")
+	for i in vertical_info:
+		for j in i:
+			print(j["KEY"])
 	return horizental_info,vertical_info 
  
 def set_ans(file):
@@ -66,7 +74,6 @@ def set_ans(file):
 	grid = make_grid(file)
 	ans_list = ans.split('@')
 	ans_list = ans_list[:m]
-	print(ans_list)
 	i=0
 	j=0
 	for index,value in enumerate(ans_list):
@@ -89,3 +96,4 @@ def get_columns_grid(file):
 	for i in range(num_columns):
 		columns.append(grid[:, i])
 	return columns	
+print(get_info("sample.txt"))
