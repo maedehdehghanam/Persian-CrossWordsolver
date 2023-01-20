@@ -63,18 +63,19 @@ def train_model(filename) :
 	print("Accuracy:",metrics.accuracy_score(tets_target,predicted))
 	'''
 	return LM , count_vector
-def calssify(docs_new, LM, count_vector):
+def classify(docs_new, LM, count_vector):
 	X_new_counts = count_vector.transform(docs_new)
 	predicted = LM.predict(X_new_counts)
-	print(predicted)
 	# Show predicted data.
 	for doc, category in zip(docs_new, predicted):
 		print("{0} => {1}".format(doc, category))
-	return predicted [0]
+	return predicted[0]
+
 def main():
 	my_list =['کشوری در خاور میانه']
-	LM , count_vector = train_model()
-	predicted_class =calssify(my_list,LM, count_vector)
-	organize_classes("classification_data .csv")
+	LM , count_vector = train_model("data/classification_data .csv")
+	predicted_class =classify(my_list,LM, count_vector)
+	organize_classes("data/classification_data .csv")
 if __name__ == '__main__':
 	main()
+	

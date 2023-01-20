@@ -45,7 +45,7 @@ def get_info(file):
 				key = key[:-1]
 			data = {
 					"KEY" : key,
-					"VALUE": "",
+					"VALUE": [],
 					}
 			row_list.append(data)
 		if index<m:
@@ -96,4 +96,3 @@ def get_columns_grid(file):
 	for i in range(num_columns):
 		columns.append(grid[:, i])
 	return columns	
-print(get_info("sample.txt"))
